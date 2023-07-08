@@ -103,7 +103,7 @@ function HeroCard() {
             width: '100%' 
           }}
         >
-          <ArrowBackIosIcon />
+          <ArrowBackIosIcon sx={{ color: 'white'}}/>
         </IconButton>
       </div>
       
@@ -140,7 +140,7 @@ function HeroCard() {
             width: '100%' 
           }}
         >
-          <ArrowForwardIosIcon/>
+          <ArrowForwardIosIcon sx={{ color: 'white'}}/>
         </IconButton>
       </div>
       <Pagination 

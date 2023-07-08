@@ -48,10 +48,10 @@
     grid-template-columns: 1fr;
   }
 
-  .mini-cards {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+  /* .mini-cards {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     row-gap: 10px;
-  }
+  } */
 }
 

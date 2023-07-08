@@ -49,9 +49,9 @@ function MiniCard(props) {
         onMouseLeave={(e) => mouseLeave(e)} 
         sx={{ 
           borderRadius: '50px', 
-          height: '350px',
           display: 'flex',
-          color: 'white'
+          color: 'white',
+          height: '100%'
         }}
       >
         <CardActionArea>
@@ -74,12 +74,22 @@ function MiniCard(props) {
                 position: 'absolute',
               }}
             >
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography variant="h2" component="div" sx={{gridArea: '1 / 1 / 2 / 3'}}>
                 {props.title.toUpperCase()}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              {/* <Typography variant="body2" color="text.secondary">
                 {descriptions[props.title]}
-              </Typography>
+              </Typography> */}
+              <Link id='qpl23' href='/qpl-standings' underline='none'>
+                <Typography variant="h3" component="div" fontFamily={'Staatliches'}>
+                  QPL '23
+                </Typography>
+              </Link>
+              <Link id='qsc23' href='/qsc-standings' underline='none'>
+                <Typography variant="h3" component="div" fontFamily={'Staatliches'}>
+                  QSC '23
+                </Typography>
+              </Link>
             </CardContent>
           {/* </Link> */}
         </CardActionArea>

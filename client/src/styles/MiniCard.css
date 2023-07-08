@@ -1,37 +1,69 @@
 
 
 #mini-card:hover #card-content   {
-  animation: transformContent 0.5s ease 1;
-  top:10%
+  /* animation: transformContent 0.5s ease 1; */
+  top:0;
 }
 
 #mini-card:hover #card-media   {
-  animation: fadeMedia 0.5s ease 1;
+  animation: fadeMediaIn 0.5s ease 1;
   opacity: 0;
-  /* filter: grayscale(1); */
   bottom: 50%
 }
 
+#mini-card #card-media   {
+  animation: fadeMediaOut 0.5s ease 1;
+  opacity: 1;
+  bottom: 0
+}
+
 #mini-card #card-content   {
-  /* animation: transformContent 0.5s ease 1; */
+  display: grid;
   top:60%;
   width: 100%;
-  /* background: white; */
-  /* padding-bottom: 350px; */
+  transition: top 0.5s ease;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 #mini-card {
-  background: linear-gradient(-45deg, rgba(232, 73, 0, 0.619) 9%, rgba(255, 0, 144, 0.547) 45%, rgba(35, 134, 170, 0.633) 60%, rgba(41, 255, 205, 0.731) 92%); 
-  background-size: 200% 200%;
-  background-position: 0% 0%;
-  animation: gradientOut 0.5s ease-in-out 1;
+  opacity: 0.9;
+  transition: scale 0.2s ease;
 }
 
 #mini-card:hover {
-  animation: gradient 0.5s ease-in-out 1;
-  background-position: 100% 100%;
+  opacity: 1;
+  scale: 0.99;
 }
 
+.mini-card.leagues #mini-card {
+  background: rgb(48, 48, 52);
+}
+
+.mini-card.awards #mini-card {
+  background: wheat;
+  color: black;
+}
+
+#qpl23 {
+  color: rgb(235, 7, 7);
+  align-self: self-end;
+  justify-self: center;
+}
+
+#qsc23 {
+  color: rgb(0, 255, 47);
+  align-self: self-end;
+  /* justify-self: center; */
+}
+
+#qpl23:hover {
+  text-decoration: underline;
+}
+
+#qsc23:hover {
+  text-decoration: underline;
+}
 
 @keyframes transformContent {
   0% {
@@ -42,7 +74,7 @@
   }
 }
 
-@keyframes fadeMedia {
+@keyframes fadeMediaIn {
   0% {
     opacity: 1;
     transform: translate(0, 0);
@@ -53,20 +85,13 @@
   }
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 0%;
-	}
-	100% {
-		background-position: 100% 100%;
-	}
-}
-
-@keyframes gradientOut {
-	0% {
-		background-position: 100% 100%;
-	}
-	100% {
-		background-position: 0% 0%;
-	}
+@keyframes fadeMediaOut {
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  0% {
+    opacity: 0;
+    transform: translate(0, -170px);
+  }
 }
