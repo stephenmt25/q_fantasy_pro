@@ -1,12 +1,17 @@
 import React, { useState, useEffect }  from "react";
 import '../styles/StandingsTable.css';
-import InfoCard from "./InfoCard";
+// import InfoCard from "./InfoCard";
 import MyLoader from "./Loader";
 import { DataGrid, GridCellParams } from '@mui/x-data-grid';
 
 const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
   // Sort the FPL data by points
   const sortedData = standingsData?.sort((a, b) => b.total - a.total);
+  const gradient = 'linear-gradient(-45deg, rgba(232, 73, 0, 0.619) 0%, rgba(255, 0, 144, 0.547) 8%, rgba(35, 134, 170, 0.633) 90%, rgba(41, 255, 205, 0.731) 100%);'
+  
+  const handleRowClick = (params) => {
+    console.log(params);
+  };
 
   return (
     <DataGrid columns={[
@@ -56,9 +61,14 @@ const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
             "total points": entry.total
           }
         ))} 
-        sx={{ background: "white", margin: '20px' }}
+        sx={{ 
+          background: gradient, 
+          margin: '20px', 
+          color: 'white',
+        }}
         hideFooter
         disableColumnMenu
+        onRowClick={handleRowClick} 
         />
   );
 };

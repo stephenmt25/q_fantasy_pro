@@ -17,13 +17,23 @@
 }
 
 .hero-card {
-  background-color: #3b3737;
+  background: #0202f7; 
+  background-size: 200% 200%;
   border-radius: 50px;
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
   grid-template-rows: 7fr 1fr;
   justify-items: center;
   align-items: center;
+  animation: gradientOut 1s ease infinite;
+  background-position: 0% 0%;
+  max-height: 350px;
+}
+
+.hero-card:hover {
+  animation: gradient 1s ease infinite;
+  scale: 0.9;
+  background-position: 100% 100%;
 }
 
 .Pagination {
@@ -141,4 +151,22 @@
   .hero {
     grid-template-columns: 1fr;
   }
+}
+
+@keyframes gradient {
+	0% {
+		scale: 1;
+	}
+	100% {
+		scale: 0.9;
+	}
+}
+
+@keyframes gradientOut {
+	0% {
+		scale: 0.9;
+	}
+	100% {
+		scale: 1;
+	}
 }

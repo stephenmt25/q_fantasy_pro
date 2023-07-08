@@ -1,5 +1,5 @@
 .landing-page-main-container {
-  background-color: black;
+  /* background-color: black; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 150px 2fr 1fr;
@@ -7,22 +7,51 @@
 }
 
 .standings-page-main-container {
-  background-color: black;
+  /* background-color: black; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 150px 2fr 1fr;
   height: 100vh;
 }
 
+.about-page-main-container {
+  /* background-color: black; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px 2fr 1fr;
+  height: 100vh;
+}
+
+
+.temp {
+  color: white;
+  align-self: center;
+  justify-self: center;
+}
+
 .hero {
   color: white;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding: 30px;
+  padding: 5px 10px;
+}
+
+.mini-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px 10px;
+  column-gap: 10px;
 }
 
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
   }
+
+  .mini-cards {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
 }
+

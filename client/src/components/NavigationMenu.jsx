@@ -10,10 +10,19 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Link from '@mui/material/Link';
 
 function NavigationMenu() {
   const [state, setState] = useState(false)
   const [screenSize, setScreenSize] = useState(getCurrentDimension());
+
+  const navButtons = [
+    {'title': 'Home', 'linkTo': '/'}, 
+    {'title': 'About', 'linkTo': '/about'}, 
+    {'title': 'Profile', 'linkTo': '/profile'}, 
+    {'title': 'Logout', 'linkTo': '/logout'}, 
+    {'title': 'QPL Table', 'linkTo': '/qpl-standings'}
+  ]
 
   function getCurrentDimension(){
       return {
@@ -65,13 +74,16 @@ function NavigationMenu() {
             onKeyDown={toggleDrawer('close')}
           >
             <List>
-              {['Home', 'About', 'Profile', 'Logout'].map((text, index) => (
-                <ListItem key={text} disablePadding>
+              {navButtons.map((button, index) => (
+                <ListItem key={button.title} disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <Link href={button.linkTo} underline="none">
+                      <ListItemText primary={button.title} />
+                    </Link>
+                    {/*  */}
                   </ListItemButton>
                 </ListItem>
               ))}
