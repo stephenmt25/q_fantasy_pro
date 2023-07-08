@@ -1,0 +1,14 @@
+{
+  "name": "qpl_full_stack",
+  "version": "1.0.0",
+  "description": "this is qpl",
+  "main": "./client/src/App.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd ./client; npm start",
+    "server": "cd ./server; npm run dev"
+  },
+  "author": "stephenmt",
+  "license": "ISC"
+}
