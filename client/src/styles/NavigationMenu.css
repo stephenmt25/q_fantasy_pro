@@ -1,0 +1,33 @@
+.desktopNav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+.menu-items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-items li {
+  margin-right: 20px;
+}
+
+.menu-items li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navButton {
+  display: flex;
+  justify-content: flex-end;
+}
+

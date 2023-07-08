@@ -1,0 +1,28 @@
+.landing-page-main-container {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px 2fr 1fr;
+  height: 100vh;
+}
+
+.standings-page-main-container {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 150px 2fr 1fr;
+  height: 100vh;
+}
+
+.hero {
+  color: white;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 30px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

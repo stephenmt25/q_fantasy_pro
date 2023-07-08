@@ -1,0 +1,11 @@
+.application-name {
+  color: white;
+  padding-left: 35px;
+}
+
+.r1 {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}

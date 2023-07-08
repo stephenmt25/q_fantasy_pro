@@ -1,0 +1,35 @@
+.info-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s;
+  position: absolute;
+  right: 6%;
+}
+
+.info-box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.close-button {
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+  border: none;
+  background-color: rgb(58, 46, 49);
+}
+
+.close-button:hover {
+  color: #333;
+}
