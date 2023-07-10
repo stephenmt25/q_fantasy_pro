@@ -8,7 +8,7 @@ import HeroCard from '../components/HeroCard';
 import StandingsPage from '../components/StandingsTable'
 import MiniCard from '../components/MiniCard';
 import leagueImage from '../images/leagues.png';
-import awardsImage from '../images/qplLogo.jpg'
+import awardsImage from '../images/qplLogo.jpg';
 
 function LandingPage() {
   return (

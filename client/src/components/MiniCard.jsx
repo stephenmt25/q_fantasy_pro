@@ -2,17 +2,9 @@ import React, { useState } from 'react';
 import '../styles/MiniCard.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Link } from '@mui/material';
 
-// props = title
-
-const descriptions =
-  {
-    leagues: 'League Tables and more information',
-    awards: 'Awards for Manager of the Month and Hall of Famers'
-  }
 
 function MiniCard(props) {
   const [ hovered, setHovered ] = useState(false)
@@ -55,19 +47,6 @@ function MiniCard(props) {
         }}
       >
         <CardActionArea>
-          {/* <Link href={props.linkTo} underline="none"> */}
-            <CardMedia
-              id='card-media'
-              component="img"
-              image={props.image}
-              sx={{ 
-                borderTopRadius: '50px', 
-                maxHeight: '60%', 
-                // display: `${hovered ? 'none' : 'block'}`,
-                position: 'absolute',
-                top: 0
-              }}
-            />
             <CardContent 
               id='card-content'
               sx={{
@@ -77,9 +56,6 @@ function MiniCard(props) {
               <Typography variant="h2" component="div" sx={{gridArea: '1 / 1 / 2 / 3'}}>
                 {props.title.toUpperCase()}
               </Typography>
-              {/* <Typography variant="body2" color="text.secondary">
-                {descriptions[props.title]}
-              </Typography> */}
               <Link id='qpl23' href='/qpl-standings' underline='none'>
                 <Typography variant="h3" component="div" fontFamily={'Staatliches'}>
                   QPL '23
@@ -91,7 +67,6 @@ function MiniCard(props) {
                 </Typography>
               </Link>
             </CardContent>
-          {/* </Link> */}
         </CardActionArea>
       </Card>
     </div>

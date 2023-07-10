@@ -1,27 +1,23 @@
 .landing-page-main-container {
-  /* background-color: black; */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 150px 2fr 1fr;
+  grid-template-rows: 0fr 2fr 1fr;
   height: 100vh;
 }
 
 .standings-page-main-container {
-  /* background-color: black; */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 150px 2fr 1fr;
+  grid-template-rows: 0fr 2fr 1fr;
   height: 100vh;
 }
 
 .about-page-main-container {
-  /* background-color: black; */
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 150px 2fr 1fr;
+  grid-template-rows: 0fr 2fr 1fr;
   height: 100vh;
 }
-
 
 .temp {
   color: white;
@@ -47,11 +43,5 @@
   .hero {
     grid-template-columns: 1fr;
   }
-
-  /* .mini-cards {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    row-gap: 10px;
-  } */
 }
 

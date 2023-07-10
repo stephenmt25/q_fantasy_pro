@@ -145,6 +145,8 @@
   .hero {
     grid-template-columns: 1fr;
   }
+
+  
 }
 
 @keyframes gradient {
