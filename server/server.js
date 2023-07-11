@@ -12,7 +12,6 @@ const clusterUri = 'mongodb+srv://stephenmthomas95:ggmu4464@qplcluster.ml7wrqt.m
 // const client = new MongoClient(clusterUri, { useNewUrlParser: true, useUnifiedTopology: true });
 // const managers_collection = client.db('test').collection('managers');
 
-// const stats_collection = client.db('test').collection('currentstats');
 
 const client = new MongoClient(clusterUri, {
   serverApi: {
@@ -23,6 +22,7 @@ const client = new MongoClient(clusterUri, {
 });
 
 const standings_collection = client.db('qplDatabase').collection('standings');
+const stats_collection = client.db('qplDatabase').collection('qplTeamStats');
 
 async function run() {
   try {
@@ -82,17 +82,17 @@ app.get('/standingsData', (req,res) => {
     });
 })
 
-// app.get('/statsData', (req,res) => {
-//   stats_collection.find().toArray()
-//     .then(data => {
-//       console.log('Stats Data Fetched');
-//       res.json(data);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({ error: 'Internal server error' });
-//     });
-// })
+app.get('/statsData', (req,res) => {
+  stats_collection.find().toArray()
+    .then(data => {
+      console.log('Stats Data Fetched');
+      res.json(data);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    });
+})
 
 //Starting the Server
 app.listen(8000, () => {

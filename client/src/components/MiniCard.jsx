@@ -53,18 +53,21 @@ function MiniCard(props) {
                 position: 'absolute',
               }}
             >
-              <Typography variant="h2" component="div" sx={{gridArea: '1 / 1 / 2 / 3'}}>
+              <span id='card-title'>
                 {props.title.toUpperCase()}
-              </Typography>
+              </span>
               <Link id='qpl23' href='/qpl-standings' underline='none'>
-                <Typography variant="h3" component="div" fontFamily={'Staatliches'}>
+                <span id='league-title'>
                   QPL '23
-                </Typography>
+                </span>
+                <span id='table-link'>
+                  See Table
+                </span>
               </Link>
               <Link id='qsc23' href='/qsc-standings' underline='none'>
-                <Typography variant="h3" component="div" fontFamily={'Staatliches'}>
+                <span id='league-title'>
                   QSC '23
-                </Typography>
+                </span>
               </Link>
             </CardContent>
         </CardActionArea>

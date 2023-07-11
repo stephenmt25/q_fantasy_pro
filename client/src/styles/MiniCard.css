@@ -2,7 +2,7 @@
 
 #mini-card:hover #card-content   {
   /* animation: transformContent 0.5s ease 1; */
-  top:0;
+  top:-10px;
 }
 
 #mini-card:hover #card-media   {
@@ -18,12 +18,12 @@
 }
 
 #mini-card #card-content   {
-  display: grid;
-  top:60%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  top:45%;
+  width: 90%;
   transition: top 0.5s ease;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
 }
 
 #mini-card {
@@ -46,24 +46,63 @@
 }
 
 #qpl23 {
-  color: rgb(235, 7, 7);
-  align-self: self-end;
-  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-#qsc23 {
-  color: rgb(0, 255, 47);
-  align-self: self-end;
-  /* justify-self: center; */
-}
 
-#qpl23:hover {
+#table-link:hover {
   text-decoration: underline;
 }
 
-#qsc23:hover {
-  text-decoration: underline;
+#card-content span {
+  font-family: "Staatliches", sans-serif;
+  font-size: 5rem;
 }
+
+@media (max-width: 900px) {
+  #card-content #card-title {
+    font-family: "Staatliches", sans-serif;
+    font-size: 3rem;
+  }
+
+  span#league-title {
+    font-size: 3rem;
+  }
+
+  span#table-link {
+    /* font-size: 1rem; */
+    display: none;
+  }
+
+  #qpl23 {
+    padding-top: 30px;
+    transition: all 0.1s ease;
+  }
+
+  #league-title:hover {
+    text-decoration: underline;
+  }
+
+  #mini-card:hover #card-content {
+    top: 20px;
+
+    #qpl23 {
+      padding-top: 10px;
+    }
+  }
+
+  #mini-card #card-content {
+    padding: 0px;
+    padding-left: 10px;
+    top:60%;
+  }
+}
+
+/* #qsc23:hover {
+  text-decoration: underline;
+} */
 
 @keyframes transformContent {
   0% {

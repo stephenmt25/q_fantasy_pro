@@ -113,7 +113,7 @@ function StandingsPage(props) {
       ? 
       StandingsTable(standings, updateFocusedManager, showInfo)
       : 
-      <MyLoader/>
+      <MyLoader id="loader"/>
       }
       {/* <InfoCard showInfo={showInfo} focusedManager={focusedManager} rank={rank} onClose={onClose}/> */}
     </>
