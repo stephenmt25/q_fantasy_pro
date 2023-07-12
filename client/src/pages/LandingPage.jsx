@@ -7,11 +7,12 @@ import Header from '../components/Header';
 import HeroCard from '../components/HeroCard';
 import StandingsPage from '../components/StandingsTable'
 import MiniCard from '../components/MiniCard';
-import leagueImage from '../images/leagues.png';
-import awardsImage from '../images/qplLogo.jpg';
+const { qpl23, oldData, TEAM_IDS } = require('../constants');
 
 function LandingPage() {
   const [ data, setData ] = useState([])
+  const [ managerId, setManagerId ] = useState(457790)
+  const [ managersInfo, setManagersInfo ] = useState(qpl23)
 
   useEffect(() => {
     fetch("/statsData").then(
@@ -23,15 +24,26 @@ function LandingPage() {
     )
   }, [])
 
+  function getManagerName(id) {
+    let  manager = managersInfo.map(obj => {
+      if (obj.id === id) {
+        return obj.player_name
+      }
+    })
+    return manager
+  }
+
+  const managerName = getManagerName(managerId)
+
   return (
     <>
       <Routes>
         <Route path="/" element={
             <>
               <div className="landing-page-main-container">
-                <Header/>
+                <Header setManagerId={setManagerId} managerName={managerName}/>
                 <div className='hero'>
-                  <HeroCard managerData={data}/>
+                  <HeroCard allManagerData={data} focusedManager={managerId} />
                 </div>  
                 <div className='mini-cards'>
                   <MiniCard title="leagues" linkTo='/qpl-standings'/>

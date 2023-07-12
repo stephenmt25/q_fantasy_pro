@@ -1,5 +1,4 @@
 .application-name {
-  color: white;
   padding-left: 35px;
 }
 
@@ -7,4 +6,16 @@
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
+}
+
+.header-text {
+  display: flex;
+  color: white;
+  align-items: center;
+  max-width: 500px;
+  flex-wrap: wrap;
+}
+
+.welcome-message {
+  padding-left: 35px
 }

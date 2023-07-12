@@ -12,7 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Link from '@mui/material/Link';
 
-function NavigationMenu() {
+function NavigationMenu({ openModal }) {
   const [state, setState] = useState(false)
   const [screenSize, setScreenSize] = useState(getCurrentDimension());
 
@@ -98,7 +98,7 @@ function NavigationMenu() {
       <ul className="menu-items">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/profile">Profile</a></li>
+        <li><a onClick={openModal}>Profile</a></li>
       <li><a href="/qpl-standings">QPL Table</a></li>
       </ul>
     </div> 

@@ -43,5 +43,8 @@
   .hero {
     grid-template-columns: 1fr;
   }
+  .landing-page-main-container {
+    grid-template-rows: 0fr 1fr 1fr 1fr;
+  }
 }
 

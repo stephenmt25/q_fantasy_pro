@@ -11797,7 +11797,242 @@ const oldData = [
   }
 ]
 
+const qpl23 = [
+  {
+    "_id": "6479eab818b5e77012d10d98",
+    "id": 457790,
+    "entry_name": "Team Kroosin",
+    "event_total": 46,
+    "last_rank": 1,
+    "player_name": "Mohammad Saeed",
+    "rank": 1,
+    "rank_sort": 1,
+    "total": 2599
+  },
+  {
+    "_id": "6479eab818b5e77012d10dd0",
+    "id": 3390915,
+    "entry_name": "2Goals 1Cup",
+    "event_total": 51,
+    "last_rank": 4,
+    "player_name": "Nihar Seth",
+    "rank": 4,
+    "rank_sort": 4,
+    "total": 2520
+  },
+  {
+    "_id": "6479eab818b5e77012d10df0",
+    "id": 2239063,
+    "entry_name": "Akloppalypse",
+    "event_total": 45,
+    "last_rank": 5,
+    "player_name": "Sebastian Jacob",
+    "rank": 5,
+    "rank_sort": 5,
+    "total": 2479
+  },
+  {
+    "_id": "6479eab818b5e77012d10e05",
+    "id": 5383899,
+    "entry_name": "Stonedtothebone",
+    "event_total": 40,
+    "last_rank": 6,
+    "player_name": "Aryan Roy",
+    "rank": 6,
+    "rank_sort": 6,
+    "total": 2466
+  },
+  {
+    "_id": "6479eab818b5e77012d10e0b",
+    "id": 671423,
+    "entry_name": "cosmos fc",
+    "event_total": 61,
+    "last_rank": 3,
+    "player_name": "Yashraj Shetty",
+    "rank": 3,
+    "rank_sort": 3,
+    "total": 2532
+  },
+  {
+    "_id": "6479eab818b5e77012d10e1b",
+    "id": 2435344,
+    "entry_name": "Skrr Squad",
+    "event_total": 64,
+    "last_rank": 9,
+    "player_name": "Nikhil Vinod",
+    "rank": 8,
+    "rank_sort": 8,
+    "total": 2410
+  },
+  {
+    "_id": "6479eab818b5e77012d10e24",
+    "id": 540163,
+    "entry_name": "Kepatitis-C",
+    "event_total": 47,
+    "last_rank": 8,
+    "player_name": "Shishir Shetty",
+    "rank": 9,
+    "rank_sort": 9,
+    "total": 2403
+  },
+  {
+    "_id": "6479eab818b5e77012d10e28",
+    "id": 5168169,
+    "entry_name": "GS11",
+    "event_total": 49,
+    "last_rank": 7,
+    "player_name": "Stephen Thomas",
+    "rank": 7,
+    "rank_sort": 7,
+    "total": 2427
+  },
+  {
+    "_id": "6479eab818b5e77012d10e3c",
+    "id": 6403034,
+    "entry_name": "referral fc",
+    "event_total": 55,
+    "last_rank": 10,
+    "player_name": "rahul kadam",
+    "rank": 10,
+    "rank_sort": 10,
+    "total": 2385
+  },
+  {
+    "_id": "6479eab818b5e77012d10e41",
+    "id": 433769,
+    "entry_name": "Saka Potatoes",
+    "event_total": 69,
+    "last_rank": 2,
+    "player_name": "sebastian bose",
+    "rank": 2,
+    "rank_sort": 2,
+    "total": 2547
+  },
+  {
+    "_id": "6479eab818b5e77012d10e4c",
+    "id": 690005,
+    "entry_name": "Bachpan Ka Pyaar FC",
+    "event_total": 46,
+    "last_rank": 11,
+    "player_name": "Abhishek Seth",
+    "rank": 11,
+    "rank_sort": 11,
+    "total": 2364
+  },
+  {
+    "_id": "6479eab818b5e77012d10e63",
+    "id": 990922,
+    "entry_name": "Cesc and the City",
+    "event_total": 54,
+    "last_rank": 12,
+    "player_name": "Ivan Manjila",
+    "rank": 12,
+    "rank_sort": 12,
+    "total": 2359
+  },
+  {
+    "_id": "6479eab818b5e77012d10e6e",
+    "id": 4694258,
+    "entry_name": "Evolution XI",
+    "event_total": 42,
+    "last_rank": 13,
+    "player_name": "Mizgan Masani",
+    "rank": 13,
+    "rank_sort": 13,
+    "total": 2328
+  },
+  {
+    "_id": "6479eab818b5e77012d10e88",
+    "id": 3465918,
+    "entry_name": "Snow9",
+    "event_total": 38,
+    "last_rank": 15,
+    "player_name": "Akshay Ajith",
+    "rank": 14,
+    "rank_sort": 14,
+    "total": 2309
+  },
+  {
+    "_id": "6479eab818b5e77012d10e97",
+    "id": 2121626,
+    "entry_name": "better call paul",
+    "event_total": 33,
+    "last_rank": 14,
+    "player_name": "paul bose",
+    "rank": 15,
+    "rank_sort": 15,
+    "total": 2303
+  },
+  {
+    "_id": "6479eab818b5e77012d10eb0",
+    "id": 2457101,
+    "entry_name": "hotel? Thiago",
+    "event_total": 53,
+    "last_rank": 17,
+    "player_name": "Louie Jacob",
+    "rank": 16,
+    "rank_sort": 16,
+    "total": 2259
+  },
+  {
+    "_id": "6479eab818b5e77012d10ebf",
+    "id": 4792016,
+    "entry_name": "Mikel Ars-eta",
+    "event_total": 33,
+    "last_rank": 16,
+    "player_name": "Shourya Roy",
+    "rank": 17,
+    "rank_sort": 17,
+    "total": 2239
+  },
+  {
+    "_id": "6479eab818b5e77012d10ed8",
+    "id": 4106412,
+    "entry_name": "DX11",
+    "event_total": 59,
+    "last_rank": 19,
+    "player_name": "shyam shankar",
+    "rank": 18,
+    "rank_sort": 18,
+    "total": 2172
+  },
+  {
+    "_id": "6479eab818b5e77012d10eda",
+    "id": 6327255,
+    "entry_name": "Pique blinders",
+    "event_total": 26,
+    "last_rank": 18,
+    "player_name": "Robin Alvares",
+    "rank": 19,
+    "rank_sort": 19,
+    "total": 2152
+  },
+  {
+    "_id": "6479eab818b5e77012d10ee7",
+    "id": 2476293,
+    "entry_name": "brokeback mount10",
+    "event_total": 63,
+    "last_rank": 21,
+    "player_name": "kiran thomas",
+    "rank": 20,
+    "rank_sort": 20,
+    "total": 2109
+  },
+  {
+    "_id": "6479eab818b5e77012d10f04",
+    "id": 4702822,
+    "entry_name": "cancel-o-culture",
+    "event_total": 22,
+    "last_rank": 20,
+    "player_name": "cyril Jose",
+    "rank": 21,
+    "rank_sort": 21,
+    "total": 2084
+  }
+]
+
 module.exports = {
   TEAM_IDS,
-  oldData
+  oldData,
+  qpl23
 };

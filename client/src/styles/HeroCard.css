@@ -1,32 +1,15 @@
-.left-click {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  grid-row: 1/3;
-  grid-column: 1/1;
-}
-
-.right-click {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  grid-row: 1/3;
-  grid-column: 3/3;
-}
-
 .hero-card {
   background: #0202f7; 
   border-radius: 50px;
-  display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 7fr 1fr;
-  justify-items: center;
-  align-items: center;
-  /* max-height: 350px; */
   opacity: 0.9;
   transition: scale 0.3s ease;
+  max-width: 320px;
+  /* max-height: 300px; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-card:hover {
@@ -34,78 +17,82 @@
   scale: 0.99;
 }
 
-.Pagination {
-  grid-column: 1/4;
-  grid-row: 2/3
-}
-
-.hero-card img {
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
-}
-
-.hero-card-content h2 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.hero-card-content p {
-  margin: 10px 0 0;
-  font-size: 14px;
-  color: #888;
-}
-
-.dot {
+.card-header {
   display: flex;
-  /* width: 10px; */
-  border: 0;
-  height: 13px;
-  margin: 0 0.3rem;
-  outline: none;
-  border-radius: 10px;
-  top: 90px;
-  background-color: #ffffff4b;
+  justify-content: space-between;
+  width: 100%;
+  align-content: center;
 }
 
-.dot-active {
-  display: flex;
-  /* width: 20px; */
-  height: 13px;
-  border: 0;
-  margin: 0 0.3rem;
-  outline: none;
-  top: 90px;
-  background-color:   #ffffff;
-  border-radius: 10px;
+.card-title {
+  font-size: 35px;
 }
 
-@keyframes dot-expand {
-  from {
-    width: 10px;
-    background-color: #ccc;
-    height: 5x;
-  }
-  to {
-    width: 20px;
-    height: 5px;
-    background-color: #4a4a4a;
+.chart-cntr {
+  min-width: 80%;
+  min-height: 60%;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.see-more-bttn {
+  padding: 10px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.see-more-bttn:hover {
+  background-color: #1a5bc8;
+}
+
+@media (min-width: 380px) and (max-width: 926px) {
+  .hero-card {
+    min-width: 350px;
+    max-width: 600px;
   }
 }
 
-@keyframes dot-contract {
-  from {
-    width: 20px;
-    height: 5px;
-    background-color: #4a4a4a;
-  }
-  to {
-    width: 10px;
-    height: 5px;
-    background-color: #ccc;
+@media (min-width: 926px) and (max-width: 1440px) {
+  .hero-card {
+    min-width: 600px;
+    max-width: 800px;
   }
 }
+
+@media (min-width: 1440px) {
+  .hero-card {
+    max-width: 1000px;
+    /* max-height: 400px; */
+  }
+}
+
+/* @media (max-width: 600px) {
+  .hero-card {
+    max-width: 550px
+  }
+
+  .chart-cntr {
+    min-width: 500px;
+    min-height: 300px;
+  }
+} */
+
+/* @media (min-width: 380px) {
+  .chart-cntr {
+    max-width: 400px;
+    min-height: 300px;
+  }
+} */
+
+@media (max-width: 380px) {
+  .chart-cntr {
+    max-width: 300px;
+    min-height: 300px;
+  }
+} 
 
 .goLeft {
   animation: goLeft 1s;
@@ -141,13 +128,7 @@
   }
 }
 
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
 
-  
-}
 
 @keyframes gradient {
 	0% {

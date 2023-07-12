@@ -1,162 +1,191 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/HeroCard.css';
-import { Card, Typography, Grid, IconButton, Stack } from '@mui/material/';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import Pagination from '@mui/material/Pagination';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LineElement,
+} from 'chart.js';
+import { Bar, Line } from 'react-chartjs-2';
 
-//temp data
-const DATA = [
-  {
-    value: '76',
-    title: 'QPL Average',
-    page: 0
-  },
-  {
-    value: '67',
-    title: 'Overall Average ',
-    page: 1
-  },
-  {
-    value: '89',
-    title: 'Highest Points',
-    page: 2
-  },
-  {
-    value: '26',
-    title: 'Harry Kane',
-    page: 3
-  },
-];
-const page = 0;
+const { oldData } = require('../constants');
 
-function HeroCard() {
-  const [ currentPage, setCurrentPage ] =  useState(page);
-  const [ direction, setDirection ] =  useState(false);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  const goRight = () => {
-    setDirection('goRight')
-   }
- 
-  const goLeft = () => {
-    setDirection('goLeft')
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'bottom',
+    },
+    title: {
+      display: true,
+      text: 'GW Points',
+    },
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      }
+    },
+    y: {
+      grid: {
+        display: false
+      },
+    },
+  },
+};
+
+function HeroCard({allManagerData, focusedManager}) {
+  const [ managerData, setManagerData ] = useState(oldData)
+  const [ chart, setChart ] = useState('line')
+
+  useEffect(() => {
+    if(allManagerData !== []) {
+      setManagerData(allManagerData)
+    }
+  },[allManagerData]);
+
+  function allManGWPoints(gw) {
+    let  pts = managerData.map(obj => obj.stats[obj.id].current[gw].points)
+    return pts
   }
 
-  const Cards = (DATA, currentPage) => {
+  function managerPointsAllGW(fpl_id) {
+    let  all_pts = managerData.map(obj => {
+                      if (obj.stats[fpl_id] !== undefined) {
+                        return obj.stats[fpl_id].current.map(gw => gw.points)
+                      }
+                    })
+
+    const filteredArray = all_pts.filter(function (element) {
+      return element !== undefined;
+      });
+    return filteredArray
+  }
+
+  const allPts = managerPointsAllGW(focusedManager);
+
+  function makePtsByGWDataset() {
+    const ptsByGW = allPts[0] !== undefined ? allPts[0].map((pts, index) => ({ 'x': index + 1, 'y': pts })) : '';
+    return ptsByGW
+  }
+
+  function makeAccaPtsDataset() {
+    const array =  allPts[0] !== undefined ? allPts[0] : [0];
+    let gwAcca = [array[0]]
+    function reducer(accumulator, currentValue) {
+      const returns = accumulator + currentValue
+      gwAcca.push(returns)
+      return returns;
+    }
+    array.reduce(reducer)
+    return gwAcca
+  }
+
+  const labels = allPts[0] !== undefined ? makePtsByGWDataset().map(gw => gw.x) : '';
+  const data = {
+    labels: labels.slice(-10),
+    datasets: [
+      {
+        label: '457709 GW Pts',
+        data: makePtsByGWDataset().slice(-10),
+        backgroundColor: '#fff',
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
+      },
+    ],
+  }
+
+  const data2 = {
+    labels: labels.slice(-10),
+    datasets: [
+      {
+        label: '457709 Acca GW Pts',
+        data: makeAccaPtsDataset().slice(-10),
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  }
+
+
+  // const goRight = () => {
+  //   setDirection('goRight')
+  //  }
+ 
+  // const goLeft = () => {
+  //   setDirection('goLeft')
+  // }
+
+  function changeChart(current) {
+    switch (current) {
+      case 'line':
+        setChart('bar')
+        break;
+      case 'bar':
+        setChart('line')
+        break;
+      default:
+        break;
+    }
+  }
+
+
+  const Cards = ({chartType}) => {
+    let chartComponent;
+    let cardTitle;
+
+    switch (chartType) {
+      case 'bar':
+        chartComponent = <Bar options={options} data={data} />;
+        cardTitle = 'Points By Gameweek';
+        break;
+      case 'line':
+        chartComponent = <Line options={options} data={data2} />;
+        cardTitle = 'Accumulated Points'
+        break;
+      default:
+        chartComponent = null;
+        break;
+    }
+
     return (
       <>
-        <Typography variant='h1' sx={{
-          position: 'relative',
-          scale: '1.8', //add scale to envoke overlap
-          // top: {
-          //   xs: '0px', //adjust position with left and top 
-          //   md: '120px'
-          // },
-          // left: {
-          //   md: '100px' 
-          // }
-          }}
-          className={[
-            (currentPage === DATA.page && direction) ? direction : '',
-            (currentPage === DATA.page ? 'show' : 'hide')
-          ]}
-        >
-          {DATA.value}
-        </Typography>
-        <Typography variant='h6' sx={{ 
-            color: 'white',
-            position: 'relative', 
-            left: {
-              xs: '0px', //adjust position with left and top
-              md: '20px'
-            },
-            top: {
-              xs: '100px',
-              md: '100px'
-            }
-          }}
-          className={[
-            (currentPage === DATA.page && direction) ? direction : '',
-            (currentPage === DATA.page ? 'show' : 'hide')
-          ]}
-        >
-          {DATA.title}
-        </Typography>
+        <div className='card-header'>
+          <span className='card-title'>
+            {cardTitle}
+          </span>
+          <button className='see-more-bttn' onClick={() => changeChart(chartType)}>
+            Next Chart
+          </button>
+        </div>
+        <div className='chart-cntr'>
+          {chartComponent}
+        </div>
       </>  
     )
   }
 
   return (
     <div className="hero-card">
-      <div 
-        className='left-click'
-        onClick={() => {
-            setCurrentPage(currentPage === 0 ? currentPage : currentPage - 1)
-            goLeft()
-          }
-        } 
-      >
-        <IconButton 
-          aria-label="previous"
-          sx={{ 
-            opacity: currentPage === 0 ? 0 : 1,
-            width: '100%' 
-          }}
-        >
-          <ArrowBackIosIcon sx={{ color: 'white'}}/>
-        </IconButton>
-      </div>
-      
-      <Stack sx={{
-          flexDirection: {
-            xs: 'column',
-            md: 'row',
-          },
-          justifyContent: {
-            xs: 'center',
-            md: 'flex-end', // theme.breakpoints.up('md')
-          }, 
-          alignItems: {
-            xs: 'center',
-            md: 'flex-start', // theme.breakpoints.up('md')
-          }, 
-        }}
-      >
-        {DATA.map(item => Cards(item, currentPage))}
-      </Stack>
-
-      <div 
-        className='right-click'
-        onClick={() => {
-            setCurrentPage( currentPage === DATA.length - 1 ? currentPage : currentPage + 1)
-            goRight()
-          }
-        } 
-      >
-        <IconButton 
-          aria-label="next"
-          sx={{ 
-            opacity: currentPage === DATA.length - 1 ? 0 : 1,
-            width: '100%' 
-          }}
-        >
-          <ArrowForwardIosIcon sx={{ color: 'white'}}/>
-        </IconButton>
-      </div>
-      <Pagination 
-        className='Pagination'
-        count={DATA.length} 
-        hidePrevButton 
-        hideNextButton 
-        page={currentPage + 1} 
-        renderItem={(item) => (
-          <button
-              key={item.page}
-              className={item.selected ? 'dot-active' : 'dot'}
-          />
-        )}
-      />
-
+        <Cards chartType={chart}/>    
     </div>
   );
 }
