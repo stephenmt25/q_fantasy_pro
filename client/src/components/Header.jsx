@@ -3,15 +3,10 @@ import '../styles/Header.css'
 import NavigationMenu from './NavigationMenu';
 import SignInModal from './SignInModal';
 
-function Header({ setManagerId, managerName }) {
+function Header({ managerName }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  function updateManager(id) {
-    setManagerId(id)
-    console.log(id);
-  }
 
   return (
     <header className='r1'>
@@ -20,7 +15,7 @@ function Header({ setManagerId, managerName }) {
         <h3 className='welcome-message'> Welcome {managerName} </h3>
       </div>
       <NavigationMenu openModal={handleOpen}/>
-      <SignInModal open={open} closeModal={handleClose} setUserId={updateManager}/>
+      <SignInModal open={open} closeModal={handleClose}/>
     </header>
   );
 }

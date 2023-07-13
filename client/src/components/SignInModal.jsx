@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { UserContext } from '../UserContext';
 
 const { TEAM_IDS } = require('../constants');
 
@@ -22,11 +23,12 @@ const style = {
   p: 4,
 };
 
-function SignInModal({ open, closeModal, setUserId }) {
+function SignInModal({ open, closeModal }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [openSuccess, setOpenSuccess] = React.useState(false);
   const [openFailed, setOpenFailed] = React.useState(false);
+  const { setUserId } = useContext(UserContext);
 
   const handleSuccess = (id) => {
     setUserId(id)

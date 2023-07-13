@@ -1,16 +1,9 @@
-import React, { useState, useEffect }  from "react";
-import '../styles/StandingsTable.css';
-// import InfoCard from "./InfoCard";
-import MyLoader from "./Loader";
-import { DataGrid, GridCellParams } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 
-const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
-  // Sort the FPL data by points
-  const sortedData = standingsData?.sort((a, b) => b.total - a.total);
-  const gradient = 'linear-gradient(-45deg, rgba(232, 73, 0, 0.619) 0%, rgba(255, 0, 144, 0.547) 8%, rgba(35, 134, 170, 0.633) 90%, rgba(41, 255, 205, 0.731) 100%);'
-  
+const StandingsTable = ({ standingsData }) => {
+  // const gradient = 'linear-gradient(-45deg, rgba(232, 73, 0, 0.619) 0%, rgba(255, 0, 144, 0.547) 8%, rgba(35, 134, 170, 0.633) 90%, rgba(41, 255, 205, 0.731) 100%);'
   const handleRowClick = (params) => {
-    console.log(params);
+
   };
 
   return (
@@ -34,7 +27,7 @@ const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
             headerName: 'Team',
             description:
               'FPL Team Name',
-              flex: 1
+            flex: 1
           },
           {
             field: 'gameweek points',
@@ -51,7 +44,7 @@ const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
               flex: 1
           }
         ]}
-        rows={sortedData.map((entry, index) => (
+        rows={standingsData.map((entry, index) => (
           {
             "id": index,
             "rank": entry.last_rank,
@@ -62,9 +55,13 @@ const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
           }
         ))} 
         sx={{ 
-          background: gradient, 
-          margin: '20px', 
-          color: 'white',
+          background: 'pink', 
+          margin: '25px', 
+          color: 'black',
+          borderRadius: '27px',
+          padding: '20px',
+          fontFamily: 'Staatliches',
+          fontSize: '20px'
         }}
         hideFooter
         disableColumnMenu
@@ -73,51 +70,4 @@ const StandingsTable = ( standingsData, updateFocusedManager, showInfo ) => {
   );
 };
 
-function StandingsPage(props) {
-  const [ focusedManager, setFocusedManager ] = useState('');
-  const [ rank, setRank ] = useState('');
-  const [ showInfo, setShowInfo ] = useState(false);
-  const [ standings, setStandings ] = useState([]);
-
-  useEffect(() => {
-    fetch("/standingsData").then(
-      response => response.json()
-    ).then(
-      data => {
-        setStandings(data);
-      }
-    )
-  }, [])
-
-  const updateFocusedManager = (manager, index) => {
-    return () => {
-      setFocusedManager(manager);
-      setRank(index);
-      setShowInfo(true);
-
-      if (showInfo && manager.id === focusedManager.id) {
-        setShowInfo(false);
-      }
-    };
-  };
-
-  function onClose() {
-    return () => {
-      setShowInfo(false)
-    }
-  }
-
-  return (
-    <>
-      {standings.length !== 0 
-      ? 
-      StandingsTable(standings, updateFocusedManager, showInfo)
-      : 
-      <MyLoader id="loader"/>
-      }
-      {/* <InfoCard showInfo={showInfo} focusedManager={focusedManager} rank={rank} onClose={onClose}/> */}
-    </>
-  )
-}
-
-export default StandingsPage;  
+export default StandingsTable
