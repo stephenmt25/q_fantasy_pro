@@ -1,10 +1,14 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState, useEffect, useContext }  from "react";
 import '../styles/StandingsPage.css';
 import StandingsTable from "../components/StandingsTable";
 import MyLoader from "../components/Loader";
+import DataCards from "../components/DataCards";
+import { UserContext } from "../UserContext";
 
 function StandingsPage() {
   const [ standings, setStandings ] = useState([]);
+  const { managerObj } = useContext(UserContext)
+  console.log(managerObj)
 
   useEffect(() => {
     fetch("/standingsData").then(
@@ -19,24 +23,7 @@ function StandingsPage() {
   return (
     <>
       <div className="standings-page-container">
-        <div className="data-cards">
-          <div className="row1">
-            {[1,2,3,4,5].map(i => 
-              <div className="tiny-card">
-                <div className="main-data">7th</div>
-                <span className="data-description">QPL Rank</span>
-              </div>
-            )}
-          </div>
-          <div className="row2">
-              <div className="main-card">
-
-              </div>
-              <div className="secondary-card">
-
-              </div>
-          </div>
-        </div>
+        <DataCards managerData={managerObj}/>
         {
           standings.length !== 0 
             ? 

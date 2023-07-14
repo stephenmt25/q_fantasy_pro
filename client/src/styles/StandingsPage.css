@@ -1,68 +1,11 @@
 .standings-page-container {
   display: grid;
   grid-template-rows: 2fr 3fr;
-  height: 90vh;
+  height: 100vh;
 }
 
-.MuiDataGrid-root {
-
-}
-
-.data-cards {
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-  max-height: 400px;
-}
-
-.row1 {
-  display: flex;
-  margin: 0px 10px;
-}
-
-.tiny-card {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  color: black;
-  background-color: pink;
-  border-radius: 27px;
-  padding: 20px;
-  margin: 0px 15px;
-}
-
-.main-data {
-  font-size: 90px;
-  width: min-content;
-  margin-top: -20px;
-  margin-bottom: -25px;
-}
-
-.data-description {
-  font-size: 25px;
-}
-
-.row2 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  margin: 0 10px
-}
-
-.main-card {
-  display: flex;
-  flex-direction: column;
-  color: black;
-  background-color: pink;
-  border-radius: 27px;
-  padding: 20px;
-  margin: 20px 15px -5px;
-}
-
-.secondary-card {
-  display: flex;
-  flex-direction: column;
-  color: black;
-  background-color: pink;
-  border-radius: 27px;
-  padding: 20px;
-  margin: 20px 15px -5px;
+@media (max-width: 400) {
+  /* .row1 {
+    flex-direction: column;
+  } */
 }

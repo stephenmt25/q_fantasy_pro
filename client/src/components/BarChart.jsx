@@ -13,7 +13,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
-import { createGradient, options, plugins } from './Charts';
+import { createGradient, plugins } from './Charts';
 import { UserContext } from '../UserContext';
 
 const { oldData } = require('../constants');
@@ -30,14 +30,102 @@ ChartJS.register(
   Filler
 );
 
-function HeroCard({allManagerData, focusedManager}) {
+export const options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    // legend: {
+    //   position: 'bottom',
+    // },
+    title: {
+      // display: true,
+      text: 'GW Points',
+    },
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false,
+        color: 'black',
+        lineWidth: 2,
+      },
+      border: {
+        dash: [2, 18],
+      },
+      ticks: {
+        display: true,
+        font: {
+            family: 'Jost', // Your font family
+            size: 14,
+        },
+        color: 'black'
+      },
+      title: {
+        display: false,
+        text: 'GW',
+        color: 'black',
+        font: {
+          family: 'Staatliches',
+          size: 20,
+        },
+      }
+    },
+    y: {
+      display: false,
+      grid: {
+        display: false,
+        color: 'black',
+        lineWidth: 2,
+      },
+      border: {
+        dash: [2, 21],
+      },
+      ticks: {
+        display: false,
+        font: {
+            family: 'Jost', // Your font family
+            size: 12,
+        },
+        color: 'black',
+      },
+      title: {
+        display: false,
+        text: 'Pts',
+        color: 'black',
+        font: {
+          family: 'Staatliches',
+          size: 20,
+        },
+      }
+    },
+  },
+  elements: {
+    point: {
+      pointStyle: true
+    },
+  },
+  interaction: {
+    intersect: false,
+    mode: 'index',
+  },
+};
+
+function BarChart() {
   const [ managerData, setManagerData ] = useState(oldData)
   const [ chart, setChart ] = useState('line')
   const [chartData, setChartData] = useState({
     datasets: [],
   });
   const chartRef = React.useRef(null) ;
-  const { managerObj } = useContext(UserContext)
+  const { managerObj, userId } = useContext(UserContext)
+
+  useEffect(() => {
+    fetch("/statsData")
+      .then((response) => response.json())
+      .then((data) => {
+        setManagerData(data);
+      });
+  }, []);
 
   useEffect(() => {
     const chart1 = chartRef.current;
@@ -50,20 +138,20 @@ function HeroCard({allManagerData, focusedManager}) {
       ...data2,
       datasets: data2.datasets.map(dataset => ({
         ...dataset,
-        borderColor: 'white',
+        borderColor: 'black',
         backgroundColor: createGradient(chart1.ctx, chart1.chartArea),
-        color: 'white'
+        color: 'black'
       })),
     };
 
     setChartData(chartData2);
   }, []);
 
-  useEffect(() => {
-    if(allManagerData !== []) {
-      setManagerData(allManagerData)
-    }
-  },[allManagerData]);
+  // useEffect(() => {
+  //   if(allManagerData !== []) {
+  //     setManagerData(allManagerData)
+  //   }
+  // },[allManagerData]);
 
   function allManGWPoints(gw) {
     let  pts = managerData.map(obj => obj.stats[obj.id].current[gw].points)
@@ -76,7 +164,7 @@ function HeroCard({allManagerData, focusedManager}) {
     return filteredArray;
     }
 
-  const allPts = managerPointsAllGW(focusedManager);
+  const allPts = managerPointsAllGW(userId);
 
   function makePtsByGWDataset() {
     const ptsByGW = allPts[0] !== undefined ? allPts[0].map((pts, index) => ({ 'x': index + 1, 'y': pts })) : '';
@@ -104,7 +192,7 @@ function HeroCard({allManagerData, focusedManager}) {
       {
         label: 'Points',
         data: makePtsByGWDataset().slice(-10),
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
         borderWidth: 2,
         borderRadius: Number.MAX_VALUE,
         borderSkipped: false,
@@ -118,7 +206,7 @@ function HeroCard({allManagerData, focusedManager}) {
       {
         label: 'Total Points',
         data: makeAccaPtsDataset().slice(-10),
-        borderColor: 'rgb(255, 99, 132)',
+        borderColor: 'black',
         fill: true,
       },
     ],
@@ -173,10 +261,8 @@ function HeroCard({allManagerData, focusedManager}) {
   }
 
   return (
-    <div className="hero-card">
-        <Cards chartType={chart}/>    
-    </div>
+    <Bar options={options} data={data} />    
   );
 }
 
-export default HeroCard;
+export default BarChart;

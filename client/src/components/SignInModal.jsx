@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
@@ -23,15 +23,14 @@ const style = {
   p: 4,
 };
 
-function SignInModal({ open, closeModal }) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [openSuccess, setOpenSuccess] = React.useState(false);
-  const [openFailed, setOpenFailed] = React.useState(false);
+const SignInModal = ({ open, closeModal }) => {
+  const [password, setPassword] = useState('');
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [openFailed, setOpenFailed] = useState(false);
   const { setUserId } = useContext(UserContext);
 
   const handleSuccess = (id) => {
-    setUserId(id)
+    setUserId(id);
     setOpenSuccess(true);
   };
 
@@ -53,30 +52,21 @@ function SignInModal({ open, closeModal }) {
     setOpenFailed(false);
   };
 
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-
-
   function checkId(number) {
-    let id = Number(number)
-    return TEAM_IDS.includes(id) ? handleSuccess(id) : handleFail()
+    let id = Number(number);
+    return TEAM_IDS.includes(id) ? handleSuccess(id) : handleFail();
   }
 
   const handleSignIn = (e) => {
     e.preventDefault();
     checkId(password);
-    setEmail('');
     setPassword('');
-    closeModal()
+    closeModal();
   };
-
 
   return (
     <div>
@@ -89,16 +79,6 @@ function SignInModal({ open, closeModal }) {
         <Box sx={style}>
           <h2>Sign In</h2>
           <form onSubmit={handleSignIn}>
-            {/* <div>
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-            </div> */}
             <div>
               <label htmlFor="password">FPL ID:</label>
               <input
@@ -124,7 +104,7 @@ function SignInModal({ open, closeModal }) {
         </Alert>
       </Snackbar>
     </div>
-  )
-}
+  );
+};
 
-export default SignInModal
+export default SignInModal;
