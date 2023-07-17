@@ -22,9 +22,7 @@ const NavigationMenu = ({ openModal, handleSignOut }) => {
   const navButtons = [
     { title: 'Home', linkTo: '/' },
     { title: 'About', linkTo: '/about' },
-    { title: 'Profile', linkTo: '/profile' },
-    { title: 'Logout', linkTo: '/logout' },
-    { title: 'QPL Table', linkTo: '/qpl-standings' }
+    { title: 'Logout', linkTo: '' },
   ];
 
   function getCurrentDimension() {
@@ -90,8 +88,6 @@ const NavigationMenu = ({ openModal, handleSignOut }) => {
       <ul className="menu-items">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href='/profile'>Profile</a></li>
-        <li><a href="/qpl-standings">QPL Table</a></li>
         {!signedIn && (
           <li className="sign-in">
             <a onClick={openModal}>Sign In</a>

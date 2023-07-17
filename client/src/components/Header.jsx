@@ -7,6 +7,7 @@ import { UserContext } from '../UserContext';
 const Header = () => {
   const { signedIn, managerObj, setSignedIn } = useContext(UserContext);
   const [open, setOpen] = useState(!signedIn);
+  const [openInfo, setOpenInfo] = useState(false)
 
   useEffect(() => {
     if (signedIn) {
@@ -24,6 +25,11 @@ const Header = () => {
 
   const handleSignOut = () => {
     setSignedIn(false);
+    setOpenInfo(true);
+  }
+
+  const handleCloseInfo = () => {
+    setOpenInfo(false);
   }
 
   const name = signedIn ? managerObj.manager_name : 'Manager';
@@ -35,7 +41,7 @@ const Header = () => {
         <h3 className="welcome-message"> Welcome {name} </h3>
       </div>
       <NavigationMenu openModal={handleOpen} handleSignOut={handleSignOut} />
-      <SignInModal open={open} closeModal={handleClose} />
+      <SignInModal open={open} closeModal={handleClose} openInfoSnackbar={openInfo} handleCloseInfo={handleCloseInfo}/>
     </header>
   );
 };

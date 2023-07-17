@@ -4,7 +4,7 @@
   max-height: 400px;
 }
 
-.row1 {
+.row2 {
   display: flex;
   margin: 0px 10px;
   flex-wrap: wrap;
@@ -22,21 +22,21 @@
 }
 
 .main-data {
-  font-size: 60px;
+  font-size: 70px;
   margin-top: -10px;
   margin-bottom: -10px;
   text-align: center;
 }
 
 .data-description {
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
 }
 
-.row2 {
+.row1 {
   display: grid;
   grid-template-columns: 3fr 5fr 4fr;
-  margin: 10px 10px
+  margin: 5px 10px
 }
 
 .main-card {
@@ -58,4 +58,23 @@
   border-radius: 27px;
   padding: 20px;
   margin: 0px 15px -5px;
+}
+
+.name-card {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  background-color: white;
+  border-radius: 27px;
+  padding: 20px;
+  margin: 0px 15px -5px;
+  max-height: 200px;
+}
+
+.team-name {
+  font-size: 60px;
+}
+
+.manager-name {
+  font-size: 20px;
 }

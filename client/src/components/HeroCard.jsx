@@ -27,12 +27,12 @@ ChartJS.register(
   // Title,
   Tooltip,
   // Legend,
-  Filler
+  // Filler
 );
 
 function HeroCard({allManagerData, focusedManager}) {
   const [ managerData, setManagerData ] = useState(oldData)
-  const [ chart, setChart ] = useState('line')
+  const [ chart, setChart ] = useState('bar')
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -50,9 +50,9 @@ function HeroCard({allManagerData, focusedManager}) {
       ...data2,
       datasets: data2.datasets.map(dataset => ({
         ...dataset,
-        borderColor: 'white',
-        backgroundColor: createGradient(chart1.ctx, chart1.chartArea),
-        color: 'white'
+        borderColor: 'black',
+        // backgroundColor: createGradient(chart1.ctx, chart1.chartArea),
+        color: 'black'
       })),
     };
 
@@ -104,7 +104,7 @@ function HeroCard({allManagerData, focusedManager}) {
       {
         label: 'Points',
         data: makePtsByGWDataset().slice(-10),
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
         borderWidth: 2,
         borderRadius: Number.MAX_VALUE,
         borderSkipped: false,
@@ -118,7 +118,7 @@ function HeroCard({allManagerData, focusedManager}) {
       {
         label: 'Total Points',
         data: makeAccaPtsDataset().slice(-10),
-        borderColor: 'rgb(255, 99, 132)',
+        borderColor: 'black',
         fill: true,
       },
     ],
@@ -158,12 +158,12 @@ function HeroCard({allManagerData, focusedManager}) {
     return (
       <>
         <div className='card-header'>
-          <span className='card-title'>
+          {/* <span className='card-title'>
             {cardTitle}
           </span>
           <button className='see-more-bttn' onClick={() => changeChart(chartType)}>
             Next Chart
-          </button>
+          </button> */}
         </div>
         <div className='chart-cntr'>
           {chartComponent}

@@ -1,8 +1,7 @@
 .landing-page-main-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0fr 2fr 1fr;
-  height: 100vh;
+  grid-template-rows: 5fr 2fr;
 }
 
 .standings-page-main-container {
@@ -15,7 +14,7 @@
 .about-page-main-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0fr 2fr 1fr;
+  grid-template-rows: 0fr 2fr 0fr;
   height: 100vh;
 }
 
@@ -25,18 +24,120 @@
   justify-self: center;
 }
 
-.hero {
-  color: white;
+.hero-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  padding: 5px 10px;
+  grid-template-columns: 2fr 3fr;
+  border-radius: 27px;
+  background-color: white;
+  margin: 5px 10px
+}
+
+.main-text {
+  font-size: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
 }
 
 .mini-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 5px 10px;
-  column-gap: 10px;
+  grid-template-columns: 7fr 3fr;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: 5fr 5fr 5fr;
+  border-radius: 27px;
+  background-color: rgba(255, 192, 203, 0);
+  /* background-color: pink; */
+  /* border-color: pink;
+  border-width: 1px;
+  border-style: solid; */
+  margin: 5px 5px 5px 10px
+}
+
+/* .links:hover {
+  background-color: transparent;
+} */
+
+.link {
+  /* background-color: transparent; */
+  background-color: pink;
+  display: flex;
+  color: black;
+  font-size: 50px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  transition: scale 0.2s; 
+}
+
+.link:hover {
+  background-color: black;
+  border-color: pink;
+  border-width: 1px;
+  border-style: solid;
+  scale: 1.04;
+}
+
+.link:hover .link-text {
+  color: white;
+}
+
+.link-text {
+  text-decoration: none;
+  color: black;
+}
+
+.register {
+  border-top-left-radius: 27px;
+  border-bottom-left-radius: 27px;
+}
+
+.vote {
+  border-left-style: solid;
+  border-right-style: solid;
+  border-width: 0.5px;
+  border-color: black;
+}
+
+.legacy {
+  border-top-right-radius: 27px;
+  border-bottom-right-radius: 27px;
+}
+
+.cta {
+  display: flex;
+  border-radius: 27px;
+  background-color: transparent;
+  margin: 5px 10px 5px 5px;
+  text-decoration: none;
+  color: white;
+  transition: scale 0.2s;
+  border-color: pink;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.cta:hover {
+  color: black;
+  background-color: orange;
+  scale: 1.03;
+  border-style: none;
+}
+
+.text {
+  flex-grow: 3;
+  font-size: 80px;
+  text-align: center;
+  padding-top: 40px;
+  padding-left: 20px
+}
+
+.arrow-icon {
+  flex-grow: 1;
+  font-size: 80px;
 }
 
 @media (max-width: 900px) {

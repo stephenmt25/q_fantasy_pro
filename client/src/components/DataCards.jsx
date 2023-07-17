@@ -1,27 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/DataCards.css';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  // Title,
-  Tooltip,
-  // Legend,
-  PointElement,
-  LineElement,
-  Filler,
-} from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
-import { createGradient, options, plugins } from './Charts';
 import BarChart from './BarChart';
+import createManagerObj from '../funcs/createManagerObj'
 
-const DataCards = ({ managerData }) => {
-  const [focusedManager, setFocusedManager] = useState(managerData);
-
+const DataCards = ({ managerId }) => {
+  const [ focusedManager, setFocusedManager ] = useState(createManagerObj(managerId));
+  
   useEffect(() => {
-    setFocusedManager(managerData);
-  }, [managerData]);
+    setFocusedManager(createManagerObj(managerId));
+  }, [managerId]);
 
   const abbrNum = (number, decPlaces) => {
     decPlaces = 10 ** decPlaces;
@@ -81,19 +68,26 @@ const DataCards = ({ managerData }) => {
   return (
     <div className="data-cards">
       <div className="row1">
+        <div className="name-card">         
+          <span className='team-name'>
+            {focusedManager.team_name}
+          </span>
+          <span className='manager-name'>
+            {focusedManager.manager_name}
+          </span>
+        </div>
+        <div className="main-card">
+          <BarChart/>
+        </div>
+        <div className="secondary-card"></div>
+      </div>
+      <div className="row2">
         {cardData.map((card, index) => (
           <div className="tiny-card" key={index}>
             <div className="main-data">{card.data}</div>
             <span className="data-description">{card.desc}</span>
           </div>
         ))}
-      </div>
-      <div className="row2">
-        <div></div>
-        <div className="main-card">
-          <BarChart/>
-        </div>
-        <div className="secondary-card"></div>
       </div>
     </div>
   );

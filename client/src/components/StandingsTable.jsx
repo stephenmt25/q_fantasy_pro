@@ -1,8 +1,8 @@
 import { DataGrid } from '@mui/x-data-grid';
 
-const StandingsTable = ({ standingsData }) => {
+const StandingsTable = ({ standingsData, setFocusedManager }) => {
   const handleRowClick = (params) => {
-    // Handle row click event
+    setFocusedManager(params.id)
   };
 
   const columns = [
@@ -39,7 +39,7 @@ const StandingsTable = ({ standingsData }) => {
   ];
 
   const rows = standingsData.map((entry, index) => ({
-    id: index,
+    id: entry.id,
     rank: entry.last_rank,
     teamName: entry.entry_name,
     managerName: entry.player_name,
@@ -53,7 +53,7 @@ const StandingsTable = ({ standingsData }) => {
       rows={rows}
       sx={{
         background: 'pink',
-        margin: '25px',
+        margin: '0 25px',
         color: 'black',
         borderRadius: '27px',
         padding: '20px',

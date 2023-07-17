@@ -22,6 +22,7 @@ const useLocalStorageState = (key, initialValue) => {
 const App = () => {
   const [userId, setUserId] = useLocalStorageState('userId', 5168169);
   const [managerObj, setManagerObj] = useLocalStorageState('managerObj', {
+    id: 5168169,
     manager_name: 'Stephen Thomas',
     team_name: 'GS11',
     qpl_rank: 7,
@@ -53,6 +54,7 @@ const App = () => {
     const filteredArray1 = managerArray.filter(Boolean);
     const filteredArray2 = managerPerf.filter(Boolean);
     const obj = {
+      id: filteredArray1[0]?.id,
       manager_name: filteredArray1[0]?.player_name,
       team_name: filteredArray1[0]?.entry_name,
       qpl_rank: filteredArray1[0]?.last_rank,

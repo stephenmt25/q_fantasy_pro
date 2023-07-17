@@ -8,7 +8,15 @@ import { UserContext } from "../UserContext";
 function StandingsPage() {
   const [ standings, setStandings ] = useState([]);
   const { managerObj } = useContext(UserContext)
-  console.log(managerObj)
+  const [ managerId, setManagerId ] = useState(managerObj.id)
+
+  useEffect(() => {
+    setManagerId(managerObj.id);
+  }, [managerObj]);
+
+  function setFocusedManager(id) {
+    setManagerId(id);
+  }
 
   useEffect(() => {
     fetch("/standingsData").then(
@@ -23,11 +31,11 @@ function StandingsPage() {
   return (
     <>
       <div className="standings-page-container">
-        <DataCards managerData={managerObj}/>
+        <DataCards managerId={managerId}/>
         {
           standings.length !== 0 
             ? 
-            <StandingsTable standingsData={standings}/>
+            <StandingsTable standingsData={standings} setFocusedManager={setFocusedManager}/>
             : 
             <MyLoader id="loader"/>
         }

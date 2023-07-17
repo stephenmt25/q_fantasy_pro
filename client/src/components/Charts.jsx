@@ -1,15 +1,16 @@
 export function createGradient(ctx, area) {
   const gradient = ctx.createLinearGradient(0, area.bottom, 0, area.top);
 
-  gradient.addColorStop(0, 'blue');
+  gradient.addColorStop(0, 'white');
   // gradient.addColorStop(0.5, 'black');
-  gradient.addColorStop(0.99, 'white');
+  gradient.addColorStop(0.99, 'black');
 
   return gradient;
 }
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     // legend: {
     //   position: 'bottom',
@@ -23,7 +24,7 @@ export const options = {
     x: {
       grid: {
         display: false,
-        color: 'white',
+        color: 'black',
         lineWidth: 2,
       },
       border: {
@@ -34,12 +35,12 @@ export const options = {
             family: 'Jost', // Your font family
             size: 14,
         },
-        color: 'white'
+        color: 'black'
       },
       title: {
         display: true,
         text: 'GW',
-        color: 'white',
+        color: 'black',
         font: {
           family: 'Staatliches',
           size: 20,
@@ -50,7 +51,7 @@ export const options = {
       // display: false,
       grid: {
         display: true,
-        color: 'white',
+        color: 'black',
         lineWidth: 2,
       },
       border: {
@@ -62,12 +63,12 @@ export const options = {
             family: 'Jost', // Your font family
             size: 12,
         },
-        color: 'white',
+        color: 'black',
       },
       title: {
         display: true,
         text: 'Pts',
-        color: 'white',
+        color: 'black',
         font: {
           family: 'Staatliches',
           size: 20,
@@ -101,7 +102,7 @@ export const plugins = [{
             ctx.moveTo(x, yAxis.top);
             ctx.lineTo(x, yAxis.bottom);
             ctx.lineWidth = 2;
-            ctx.strokeStyle = 'white';
+            ctx.strokeStyle = 'black';
             ctx.stroke();
             ctx.restore();
         }

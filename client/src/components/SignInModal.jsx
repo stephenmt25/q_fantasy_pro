@@ -16,14 +16,14 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 300,
+  height: 225,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
 
-const SignInModal = ({ open, closeModal }) => {
+const SignInModal = ({ open, closeModal, openInfoSnackbar, handleCloseInfo }) => {
   const [password, setPassword] = useState('');
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openFailed, setOpenFailed] = useState(false);
@@ -77,30 +77,35 @@ const SignInModal = ({ open, closeModal }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>Sign In</h2>
-          <form onSubmit={handleSignIn}>
+          <h1 style={{ "textAlign": "center" }}>Enter Your FPL Id</h1>
+          <form style={{ "display": "flex", "flexDirection": "column" }} onSubmit={handleSignIn}>
             <div>
-              <label htmlFor="password">FPL ID:</label>
               <input
                 type="password"
                 id="fpl_id"
                 value={password}
                 onChange={handlePasswordChange}
                 required
+                style={{ "fontSize": "25px" }}
               />
             </div>
-            <button type="submit">Sign In</button>
+            <button style={{ "marginTop":"30px", "fontSize": "20px", "fontFamily": "Staatliches"}} type="submit">Sign In</button>
           </form>
         </Box>
       </Modal>
-      <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>
+      <Snackbar open={openSuccess} autoHideDuration={2000} onClose={handleCloseSuccess}>
         <Alert onClose={handleCloseSuccess} severity="success" sx={{ width: '100%' }}>
           FPL ID Verified
         </Alert>
       </Snackbar>
-      <Snackbar open={openFailed} autoHideDuration={6000} onClose={handleCloseFailed}>
+      <Snackbar open={openFailed} autoHideDuration={2000} onClose={handleCloseFailed}>
         <Alert onClose={handleCloseFailed} severity="error" sx={{ width: '100%' }}>
           FPL ID Not Found
+        </Alert>
+      </Snackbar>
+      <Snackbar open={openInfoSnackbar} autoHideDuration={2000} onClose={handleCloseInfo}>
+        <Alert onClose={handleCloseInfo} severity="info" sx={{ width: '100%' }}>
+          Signed Out
         </Alert>
       </Snackbar>
     </div>
