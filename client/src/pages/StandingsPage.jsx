@@ -9,6 +9,7 @@ function StandingsPage() {
   const [ standings, setStandings ] = useState([]);
   const { managerObj } = useContext(UserContext)
   const [ managerId, setManagerId ] = useState(managerObj.id)
+  const [ fr, setFr ] = useState('1fr 3fr')
 
   useEffect(() => {
     setManagerId(managerObj.id);
@@ -16,6 +17,7 @@ function StandingsPage() {
 
   function setFocusedManager(id) {
     setManagerId(id);
+    setFr('1fr 1fr')
   }
 
   useEffect(() => {
@@ -30,7 +32,7 @@ function StandingsPage() {
 
   return (
     <>
-      <div className="standings-page-container">
+      <div className="standings-page-container" style={{ gridTemplateColumns: `${fr}`}}>
         <DataCards managerId={managerId}/>
         {
           standings.length !== 0 

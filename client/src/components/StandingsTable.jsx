@@ -48,22 +48,36 @@ const StandingsTable = ({ standingsData, setFocusedManager }) => {
   }));
 
   return (
-    <DataGrid
-      columns={columns}
-      rows={rows}
-      sx={{
-        background: 'pink',
-        margin: '0 25px',
-        color: 'black',
-        borderRadius: '27px',
-        padding: '20px',
-        fontFamily: 'Staatliches',
-        fontSize: '20px',
-      }}
-      hideFooter
-      disableColumnMenu
-      onRowClick={handleRowClick}
-    />
+    <div>
+      <span
+        style={{
+          fontSize: "17px",
+          textAlign: "center",
+          color: "white",
+          margin: "0px 7.5px 0px 7.5px",
+          fontFamily: "Jost",
+        }}
+      >
+        QPL Standings
+      </span>
+      <DataGrid
+        columns={columns}
+        rows={rows}
+        sx={{
+          background: 'pink',
+          margin: '0 25px 0 0',
+          color: 'black',
+          borderRadius: '27px',
+          padding: '20px',
+          fontFamily: 'Staatliches',
+          fontSize: '20px',
+        }}
+        hideFooter
+        disableColumnMenu
+        onRowClick={handleRowClick}
+      />
+    </div>
+    
   );
 };
 

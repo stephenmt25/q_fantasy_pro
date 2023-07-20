@@ -1,3 +1,7 @@
+* {
+  transition: all 0.5s ease;
+}
+
 .data-cards {
   display: grid;
   grid-template-rows: 2fr 3fr;
@@ -6,8 +10,8 @@
 
 .row2 {
   display: flex;
-  margin: 0px 10px;
-  flex-wrap: wrap;
+  margin: 20px 0px 10px 0;
+  justify-content: space-between;
 }
 
 .tiny-card {
@@ -16,9 +20,9 @@
   flex-direction: column;
   color: black;
   background-color: pink;
-  border-radius: 27px;
+  border-radius: 10px;
   padding: 20px;
-  margin: 10px 15px;
+  margin: 10px 7.5px;
 }
 
 .main-data {
@@ -29,14 +33,15 @@
 }
 
 .data-description {
-  font-size: 25px;
+  font-size: 14px;
   text-align: center;
+  color: white;
+  margin: 0px 7.5px 0px 7.5px;
+  font-family: Jost;
 }
 
 .row1 {
-  display: grid;
-  grid-template-columns: 3fr 5fr 4fr;
-  margin: 5px 10px
+  display: flex;
 }
 
 .main-card {
@@ -44,20 +49,20 @@
   flex-direction: column;
   color: black;
   background-color: pink;
-  border-radius: 27px;
+  border-radius: 10px;
   padding: 20px;
-  margin: 0px 15px -5px;
+  margin: 0px 7.5px;
   max-height: 200px;
 }
 
-.secondary-card {
+.gw-details-card {
   display: flex;
   flex-direction: column;
   color: black;
   background-color: pink;
-  border-radius: 27px;
+  border-radius: 10px;
   padding: 20px;
-  margin: 0px 15px -5px;
+  margin: 0px 7.5px;
 }
 
 .name-card {
@@ -65,9 +70,9 @@
   flex-direction: column;
   color: black;
   background-color: white;
-  border-radius: 27px;
+  border-radius: 10px;
   padding: 20px;
-  margin: 0px 15px -5px;
+  margin: 0px 7.5px;
   max-height: 200px;
 }
 
@@ -77,4 +82,12 @@
 
 .manager-name {
   font-size: 20px;
+}
+
+.card-description {
+  font-size: 17px;
+  text-align: center;
+  color: white;
+  margin: 0px 7.5px 0px 7.5px;
+  font-family: Jost;
 }

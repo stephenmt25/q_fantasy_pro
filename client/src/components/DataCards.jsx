@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/DataCards.css';
 import BarChart from './BarChart';
-import createManagerObj from '../funcs/createManagerObj'
+import createManagerObj from '../funcs/createManagerObj';
+import { oldData } from '../constants';
+// import BasicSelect from './BasicSelector';
+// import TitleStats from './TitleStats';
+// import StandingsTable from './StandingsTable';
 
-const DataCards = ({ managerId }) => {
+const DataCards = ({ managerId, standings, setFocusedMgr }) => {
   const [ focusedManager, setFocusedManager ] = useState(createManagerObj(managerId));
+  const [ showGWDetails, setShowGWDetails ] =  useState(false);
+  const [ gwDetails, setGwDetails ] = useState({})
   
   useEffect(() => {
     setFocusedManager(createManagerObj(managerId));
   }, [managerId]);
+
+  function showDetails(gameweek) {
+    const gw = gameweek - 1 
+    const id = focusedManager.id
+    const managerPerf = oldData.filter(obj => obj.id === id);
+    const filteredArray1 = managerPerf.filter(Boolean);
+    const gwDetails = filteredArray1[0].stats[id].current[gw];
+
+    setShowGWDetails(true)
+    setGwDetails(gwDetails)
+  }
 
   const abbrNum = (number, decPlaces) => {
     decPlaces = 10 ** decPlaces;
@@ -66,9 +83,11 @@ const DataCards = ({ managerId }) => {
   ];
 
   return (
-    <div className="data-cards">
+    <div className="data-cards" style={{ gridTemplateRows: "1fr 1fr 1fr"}}>
       <div className="row1">
-        <div className="name-card">         
+        <div className='card-full'>
+          <span className="card-description">Team Name</span>
+          <div className="name-card" style={{ width:'max-content', minWidth: '300px'}}>         
           <span className='team-name'>
             {focusedManager.team_name}
           </span>
@@ -76,18 +95,40 @@ const DataCards = ({ managerId }) => {
             {focusedManager.manager_name}
           </span>
         </div>
-        <div className="main-card">
-          <BarChart/>
-        </div>
-        <div className="secondary-card"></div>
+      </div>   
       </div>
       <div className="row2">
         {cardData.map((card, index) => (
-          <div className="tiny-card" key={index}>
-            <div className="main-data">{card.data}</div>
+          <div className='card-full'>
             <span className="data-description">{card.desc}</span>
+            <div className="tiny-card" key={index} style={{ width:'min-content', marginTop:'0px'}}>
+              <div className="main-data">{card.data}</div>
+            </div>
           </div>
+
         ))}
+      </div>
+      <div className='row3' style={{ gridTemplateColumns: '1fr 1fr', display: 'grid'}}>
+        <div className='card-full'>
+          <span className="card-description">Gameweek Points</span>
+          <div className="main-card">
+            {/* <BasicSelect/> */}
+            <BarChart showDetails={showDetails}/>
+          </div>
+        </div>
+        {showGWDetails &&
+        <div className='card-full'>
+          <span className="card-description">Gameweek Details</span>
+          <div className="gw-details-card">
+              <span>
+                Points in GW {gwDetails.event}  :        
+                <span style={{ color:"orange" }}>
+                  {gwDetails.points} 
+                </span>
+              </span>
+          </div>
+        </div>
+        }
       </div>
     </div>
   );
